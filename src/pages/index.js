@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { useState } from "react";
-import { loadModel, preprocesImage, loadImage } from "@/utils/imageProcessing";
+import { loadModel,  loadImage } from "@/utils/imageProcessing";
 
 export default function Home() {
   const [model, setModel] = useState(null);
@@ -10,16 +10,30 @@ export default function Home() {
   const handleAnalyzeClick = async () => {
     const fileInput = document.getElementById("image-upload");
     const imageFile = fileInput.files[0];
-    const image = await loadImage(imageFile);
-    const processImage = preprocesImage(image);
-    const preds = await model.predict(processImage).data();
-    setPredictions(Array.from(preds));
+
+    if(!imageFile) {
+      alert("Please upload an image file.")
+      return
+    }
+    try {
+      const image = await loadImage(imageFile);
+      const predictions = await model.classify(image)
+      setPredictions(predictions)
+    } catch (error) {
+      console.error('Error analyzing the image:', error)
+    }
+   
   };
 
   useState(() => {
     (async () => {
-      const loadedModel = await loadModel();
+      try {
+        const loadedModel = await loadModel();
       setModel(loadedModel);
+      } catch (error) {
+        console.error('Error loading the model:', error)
+      }
+      
     })();
   }, []);
   return (
@@ -27,7 +41,6 @@ export default function Home() {
       <div className={styles.container}>
         <Head>
           <title>AI-Powered Web App</title>
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
         <main className={styles.main}>
           <h1 className={styles.title}>AI-Powered Web Application</h1>
@@ -45,7 +58,7 @@ export default function Home() {
               <ul>
                 {predictions.map((pred, index) => (
                   <li key={index}>
-                    Prediction {index + 1}: {pred.toFixed(2)}
+                    {pred.className}: {(pred.probability * 100).toFixed(2)}%
                   </li>
                 ))}
               </ul>
