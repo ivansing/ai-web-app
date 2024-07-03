@@ -1,40 +1,82 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# AI-Powered Web Application with Next.js and TensorFlow.js
 
-## Getting Started
+This project demonstrates how to build an AI-powered web application using Next.js and TensorFlow.js. The application uses the MobileNet model for image classification in the browser.
 
-First, run the development server:
+## Features
+
+- **Image Classification:** Upload an image to classify it into multiple categories using a pre-trained MobileNet model.
+- **Responsive UI:** Built with Next.js for server-side rendering and a responsive design.
+- **Deployment:** Instructions for deploying the application on Vercel.
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/ivansing/ai-web-app.git
+   cd your-repo```
+
+
+```bash
+npm install
+```
+
+## Usage
+
+To run the application locally:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser and navigate to `http://localhost:3000` to see the applaction running.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Implementation
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### Techologies Used
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Next.js Reach framework for building server-side rendered applications.
+- TensorFlow.js: Machine learning library for training and deploying models in the browser.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Project Structure
 
-## Learn More
+- `pages/index.js`: Entry point of the application, contains the main UI and logic.
+- `utils/imageProcessing.js`: Utility functions for loading the MobileNet model, preprocessing images, and handling predictions.
 
-To learn more about Next.js, take a look at the following resources:
+## How to Test
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+ With the server running already, you can input images and then analyze them. The result will be a list of matching percentages of the image. It could be more accurate, but the central concept is to capture any image to analyze.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is set up to be deployed on Vercel.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Install Vercel CLI:
+
+```bash
+npm install -g vercel
+```
+
+2. Deploy the application
+
+```bash
+vercel
+```
+
+Follow the prompts to deploy the application to Vercel. Once deployed, you will get an unique URL for your application.
+
+## Contributing
+
+Contributions are welcome! Fork the repository and submit a pull request with your changes.
+
+## License
+
+This project is licensed under MIT License - See the LICENSE for details.
+
+## Acknowledgements
+
+- TensorFlow.js team for providing the MobileNet model and documentation.
+- Next.js community for the robust framework and helpful resources.
+
+
