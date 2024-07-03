@@ -10,11 +10,12 @@ This project demonstrates how to build an AI-powered web application using Next.
 
 ## Installation
 
-1. Clone the repository:
+Clone the repository:
 
-   ```bash
-   git clone https://github.com/ivansing/ai-web-app.git
-   cd your-repo```
+```bash
+git clone https://github.com/ivansing/ai-web-app.git
+cd your-repo
+```
 
 
 ```bash
